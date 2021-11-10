@@ -8,8 +8,7 @@
 # http://shop.pimoroni.com/products/adafruit-triple-axis-accelerometer
 
 import smbus
-from time 
-import sleep
+from time import sleep
 
 # select the correct i2c bus for this revision of Raspberry Pi
 with open('/proc/cpuinfo', 'r') as file:
