@@ -1,36 +1,25 @@
-Arduino Slave for Raspberry Pi Master
-  i2c_slave_ard.ino
-  Connects to Raspberry Pi via I2C
+#  Raspberry Pi Master for Arduino Slave
+#  i2c_master_pi.py
+#  Connects to Arduino via I2C
   
-  DroneBot Workshop 2019
-  https://dronebotworkshop.com
-*/
- 
-// Include the Wire library for I2C
-#include <Wire.h>
- 
-// LED on pin 13
-const int ledPin = 13; 
- 
-void setup() {
-  // Join I2C bus as slave with address 8
-  Wire.begin(0x8);
-  
-  // Call receiveEvent when data received                
-  Wire.onReceive(receiveEvent);
-  
-  // Setup pin 13 as output and turn LED off
-  pinMode(ledPin, OUTPUT);
-  digitalWrite(ledPin, LOW);
-}
- 
-// Function that executes whenever data is received from master
-void receiveEvent(int howMany) {
-  while (Wire.available()) { // loop through all but the last
-    char c = Wire.read(); // receive byte as a character
-    digitalWrite(ledPin, c);
-  }
-}
-void loop() {
-  delay(100);
-}
+#  DroneBot Workshop 2019
+#  https://dronebotworkshop.com
+
+from smbus import SMBus
+
+addr = 0x8 # bus address
+bus = SMBus(1) # indicates /dev/ic2-1
+
+numb = 1
+
+print ("Enter 1 for ON or 0 for OFF")
+while numb == 1:
+
+	ledstate = input(">>>>   ")
+
+	if ledstate == "1":
+		bus.write_byte(addr, 0x1) # switch it on
+	elif ledstate == "0":
+		bus.write_byte(addr, 0x0) # switch it on
+	else:
+		numb = 0
