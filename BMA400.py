@@ -39,11 +39,11 @@ RANGE_16G           = 0x03
 MEASURE             = 0x08
 AXES_DATA           = 0x32
 
-class ADXL345:
+class BMA400:
 
     address = None
 
-    def __init__(self, address = 0x14 ):
+    def __init__(self, address = 0x15 ):
         self.address = address
         self.setBandwidthRate(BW_RATE_100HZ)
         self.setRange(RANGE_2G)
