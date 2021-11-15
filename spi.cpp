@@ -18,4 +18,4 @@ int main(int argc, char **argv)
 
     std::cout << "Data returned: " << +buf[1] << "\n"; 
     return 0;
-}
+}  
