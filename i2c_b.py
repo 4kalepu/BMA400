@@ -15,3 +15,4 @@ while 1:
     #from the addr 0x15 and register 0x4, read 6 following bytes
     data=bus.read_i2c_block_data(0x15,0x04,6)
     #data is now in pairs of bytes of MSB and LSB for X Y and Z,
+print(data)
