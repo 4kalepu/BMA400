@@ -18,9 +18,8 @@ while 1:
     data=bus.read_i2c_block_data(0x15,0x04,6)
     #data is now in pairs of bytes of MSB and LSB for X Y and Z,
     print(data)
-    int a[6] = data
-    int a =a[0]
-    int b =a[2]
-    float c=a/b;
-    float angle= math.asin(c)
+    a =data[0]
+    b =data[2]
+    c=a/b;
+    angle= math.asin(c)
     print(angle)
