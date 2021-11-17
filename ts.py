@@ -1,7 +1,7 @@
 import time
 import serial
 import re
-import urllib2
+import urllib.request
 
 
 # setup serial communication
