@@ -1,11 +1,18 @@
-import serial
-ser = serial.Serial("/dev/ttyAMA0", 9600, timeout=1)
-ser.open()
+import time
 
-ser.write("testing")
-try:
-    while 1:
-        response = ser.readline()
-        print(response)x
-except KeyboardInterrupt:
-    ser.close() 
+import serial
+
+
+ser=serial.Serial(
+    port='/dev/ttyAMA0',
+    baudrate=9600,
+    parity=serial.PARITY_NONE,
+    stopbits=serial.STOPBITS_ONE,
+    bytesize=serial.EIGHTBITS,
+    timeout=1
+
+)
+ser.flushInput()
+while 1:
+    data_string=ser.readline()
+    print(data_string)
