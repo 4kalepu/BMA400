@@ -15,4 +15,4 @@ ser=serial.Serial(
 ser.flushInput()
 while 1:
     data_string=ser.readline()
-    print data_string
+    print(data_string)
