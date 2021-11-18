@@ -30,7 +30,7 @@ while 1:
                 Temperature4=data_float[2]
 
         counter=counter+1
-        print data_float
+        print(data_float)
 
 if counter>=4:
                 upload1=urllib2.urlopen(url1+Temperature1+"&field2=0"+Temperature2+"&field3=0"+Temperature3+"&field4=0"+Temperature4)
