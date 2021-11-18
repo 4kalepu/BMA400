@@ -14,5 +14,5 @@ ser=serial.Serial(
 )
 ser.flushInput()
 while 1:
-    data_string=ser.readline()
+    data_string=ser.readline().decode()
     print(data_string)
