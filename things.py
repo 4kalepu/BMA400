@@ -2,7 +2,7 @@ import time
 import serial
 from time import sleep
 import re
-import urllib2
+import urllib.request as urlib2
 
 ser = serial.Serial(
         port='/dev/ttyAMA0',
