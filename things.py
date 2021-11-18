@@ -16,24 +16,25 @@ counter=0
 ser.flushInput()
 url1='https://api.thingspeak.com/update?api_key=OS0P7Z4TPI9587KG&field1=0'
 while 1:
-        data_string=ser.readline()
+        data_string=ser.readline().decode()
         data_float= re.findall('\d+(?:\.\d+)?',data_string)
         NID=data_float[1]
 
         if NID=="1":
-                Temperature1=data_float[2]
+                ldr=data_float[2]
         elif NID=="2":
-                Temperature2=data_float[2]
+                ctemp=data_float[2]
         elif NID=="3":
-                Temperature3=data_float[2]
+                brake=data_float[2]
         elif NID=="4":
-                Temperature4=data_float[2]
+                ftemp=data_float[2]
 
         counter=counter+1
         print(data_float)
 
 if counter>=4:
-                upload1=urllib2.urlopen(url1+Temperature1+"&field2=0"+Temperature2+"&field3=0"+Temperature3+"&field4=0"+Temperature4)
+    
+                upload1=urllib2.urlopen(url1+ldr+"&field2=0"+ctemp+"&field3=0"+brake+"&field4=0"+ftemp)
                 upload1.read()
                 upload1.close()
                 counter=0
