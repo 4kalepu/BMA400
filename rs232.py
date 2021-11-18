@@ -12,4 +12,4 @@ counter=0
 ser.flushInput()
 while 1:
         x=ser.readline()
-        print x
+        print(x)
