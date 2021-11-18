@@ -1,5 +1,6 @@
 # I2C with BM400
 
+from re import X
 import smbus
 import time
 import math
@@ -18,8 +19,8 @@ while 1:
     data=bus.read_i2c_block_data(0x15,0x04,6)
     #data is now in pairs of bytes of MSB and LSB for X Y and Z,
     print(data)
-    a =data[0]
-    b =data[2]
-    c=a/b;
+    x=data[0]+data[1]*256
+    y=data[2]+data[3]*256
+    c=y/x
     angle= math.asin(c)
     print(angle)
